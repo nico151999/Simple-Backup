@@ -2,7 +2,7 @@
 large_files="false" # über Settings Activity kann Nutzer aktivieren, ob er auch data und obb von Interner und Externer SD backupen möchte, true heißt er möchte
 app_title="Google Maps" # über Java: pm.getApplicationLabel und wenn return null ist, dann getPackageName
 package_name="com.google.android.apps.maps" # über Java: getPackageName
-installed_app="/system/app/Maps/Maps.apk" # über Java: getPackageResourcePath
+installed_app="$(pm path "$package_name" | cut -c5-)" # oder über Java: getPackageResourcePath
 simple_backup_dir="/storage/emulated/0/SimpleBackup" # über Settings Activity von Nutzer festlegbar, bei externer SD-Karte Schreibzugriff über DocumentsUI bzw. Storage Access Framework requesten
 app_backup_dir="$simple_backup_dir/$app_title"
 
