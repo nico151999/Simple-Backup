@@ -142,7 +142,17 @@ stat -c %U "/data/data/$package_name" | xargs > "$app_backup_dir/properties/data
 
 rm -f "$app_backup_dir/temp_includedfiles"
 
-cp -rf "$installed_app" "$app_backup_dir/apk"
+if [ ! -d "${installed_app%/*}/oat" ]; then
+  cp -f "$installed_app" "$app_backup_dir/apk"
+  echo "true" > "$app_backup_dir/backupapk"
+else
+  if [ "$(echo ${installed_app%/*} | cut -f1-3 -d"/")" = "/system/app" ]; then
+    cp -f "$installed_app" "$app_backup_dir/apk"
+    echo "true" > "$app_backup_dir/backupapk"
+  else
+    echo "false" > "$app_backup_dir/backupapk"
+  fi
+fi
 
 echo "$(date)" > "$app_backup_dir/backuptime"
 
@@ -155,6 +165,9 @@ tar cfC "$simple_backup_dir/$app_title.tar" "$simple_backup_dir" "$app_title"
 md5sum "$simple_backup_dir/$app_title.tar" > "$simple_backup_dir/$app_title.tar.md5"
 
 rm -rf "$app_backup_dir"
+
+# Check ob apk gebackupt wurde
+# tar xfO "$simple_backup_dir/$app_title.tar" "$app_title/backupapk"
 
 # Backupdatumsoutput
 # tar xfO "$simple_backup_dir/$app_title.tar" "$app_title/backuptime"
