@@ -147,10 +147,10 @@ if [ ! -d "${installed_app%/*}/oat" ]; then
   echo "true" > "$app_backup_dir/backupapk"
 else
   if [ "$(echo ${installed_app%/*} | cut -f1-3 -d"/")" = "/system/app" ]; then
+    echo "false" > "$app_backup_dir/backupapk"
+  else
     cp -f "$installed_app" "$app_backup_dir/apk"
     echo "true" > "$app_backup_dir/backupapk"
-  else
-    echo "false" > "$app_backup_dir/backupapk"
   fi
 fi
 
