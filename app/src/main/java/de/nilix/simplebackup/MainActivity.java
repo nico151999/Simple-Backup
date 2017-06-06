@@ -1,5 +1,6 @@
 package de.nilix.simplebackup;
 
+import android.content.pm.PackageManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +18,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -117,9 +127,24 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            initList(rootView);
+
             return rootView;
+        }
+
+        public void initList(View view) {
+            ListView appListView = (ListView) view.findViewById(R.id.listView1);
+            ArrayList<String> appList = new ArrayList<String>();
+
+            for (int i=0; i<10; i++) {
+                appList.add("Test " + i);
+            }
+
+            ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, appList);
+            appListView.setAdapter(itemsAdapter);
         }
     }
 
