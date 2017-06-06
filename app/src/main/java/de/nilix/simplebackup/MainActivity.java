@@ -1,6 +1,5 @@
 package de.nilix.simplebackup;
 
-import android.content.pm.PackageManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
