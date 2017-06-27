@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,15 +18,24 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    String[] dataArray = new String[]{"Test1","Test2","Test3","Test4","Test5","Test6","Test7","Test8","Test9","Test10","Test11"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSectionsPageAdapters = new SectionsPageAdapter(getSupportFragmentManager());
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new RecyclerAdapter(dataArray);
+        recyclerView.setAdapter(adapter);
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
+        mSectionsPageAdapters = new SectionsPageAdapter(getSupportFragmentManager());
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -59,4 +70,5 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new Tab2Fragment(), "TAB2");
         viewPager.setAdapter(adapter);
     }
+
 }
