@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,15 @@ public class Tab1Fragment extends Fragment {
 
         loadApps(view);
 
+        String[] dataArray = new String[]{"Test1","Test2","Test3","Test4","Test5","Test6","Test7","Test8","Test9","Test10","Test11"};
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerView.Adapter adapter = new RecyclerAdapter(dataArray);
+        recyclerView.setAdapter(adapter);
+
         return view;
     }
 
@@ -44,10 +55,10 @@ public class Tab1Fragment extends Fragment {
             appList.add(info.packageName);
         }
 
-        ListView appListView = (ListView) view.findViewById(R.id.appListView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, appList);
+        //ListView appListView = (ListView) view.findViewById(R.id.appListView);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, appList);
 
-        appListView.setAdapter(adapter);
+        //appListView.setAdapter(adapter);
 
     }
 }

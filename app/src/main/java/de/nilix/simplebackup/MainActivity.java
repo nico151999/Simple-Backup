@@ -21,21 +21,23 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String[] dataArray = new String[]{"Test1","Test2","Test3","Test4","Test5","Test6","Test7","Test8","Test9","Test10","Test11"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        /*recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new RecyclerAdapter(dataArray);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
         mSectionsPageAdapters = new SectionsPageAdapter(getSupportFragmentManager());
+
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
