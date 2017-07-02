@@ -5,5 +5,5 @@
             <solid android:color="@color/cardview_dark_background" />
         </shape>
     </item>
-    <item android:drawable="@mipmap/ic_launcher" />
+    <item android:drawable="@mipmap/ic_launcher" android:id="@+id/background_icon" />
 </layer-list>
