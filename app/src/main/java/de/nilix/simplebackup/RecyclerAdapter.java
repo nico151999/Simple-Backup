@@ -1,3 +1,5 @@
+//TODO: Remove deprecated adapter
+
 package de.nilix.simplebackup;
 
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         protected TextView textView;
         public ViewHolder(View itemView) {
             super(itemView);
-            textView =  (TextView) itemView.findViewById(R.id.list_item);
+            textView =  (TextView) itemView.findViewById(R.id.package_name);
 
         }
 
