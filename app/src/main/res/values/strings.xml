@@ -2,6 +2,7 @@
     <string name="app_name">Simple Backup</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-
+    <string name="app_info">App Info</string>
+    <string name="backup">Backup</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
