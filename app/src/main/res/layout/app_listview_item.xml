@@ -29,12 +29,12 @@
 
                 <ImageView
                     android:id="@+id/package_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="true"
                     android:baselineAlignBottom="false"
-                    android:scaleType="center"
+                    android:scaleType="centerCrop"
                     app:srcCompat="@drawable/app_icon_on_card" />
 
             </LinearLayout>
