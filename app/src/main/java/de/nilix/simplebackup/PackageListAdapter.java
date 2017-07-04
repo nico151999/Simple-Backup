@@ -55,7 +55,6 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         protected TextView packageName;
         protected ImageView packageIcon;
         protected Button buttonBackup;
-        protected Button buttonInfo;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -65,10 +64,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
             packageIcon = (ImageView) itemView.findViewById(R.id.package_icon);
 
             buttonBackup = (Button) itemView.findViewById(R.id.button);
-            buttonInfo = (Button) itemView.findViewById(R.id.button2);
 
             buttonBackup.setOnClickListener(this);
-            buttonInfo.setOnClickListener(this);
         }
 
         @Override
