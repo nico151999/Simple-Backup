@@ -3,6 +3,7 @@ package de.nilix.simplebackup;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.LayerDrawable;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -59,6 +60,9 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
 
     }
+
+
+
 
     // Helpers
     private String getAppName(ApplicationInfo info, PackageManager pm) {
