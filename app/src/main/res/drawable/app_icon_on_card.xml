@@ -6,11 +6,4 @@
             <corners android:radius="8dp" />
         </shape>
     </item>
-    <item android:drawable="@mipmap/ic_launcher" android:id="@+id/icon_on_card" />
-    <item>
-        <shape android:shape="rectangle">
-            <stroke android:width="2dp" android:color="@android:color/black" />
-            <corners android:radius="6dp" />
-        </shape>
-    </item>
 </layer-list>
