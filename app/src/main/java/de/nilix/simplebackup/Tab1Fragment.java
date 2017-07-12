@@ -39,7 +39,7 @@ public class Tab1Fragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         //RecyclerView.Adapter adapter = new RecyclerAdapter(packageNamesArray); // Set data source // Old way
-        PackageListAdapter adapter = new PackageListAdapter(packages, pm);
+        PackageListAdapter adapter = new PackageListAdapter(packages, pm, getContext());
         recyclerView.setAdapter(adapter);
 
 

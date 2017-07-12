@@ -21,15 +21,14 @@
             android:background="@color/cardview_dark_background"
             android:orientation="vertical">
 
+            <!-- blurred icon background -->
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/package_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:srcCompat="@mipmap/ic_launcher" />
+                android:scaleType="centerCrop" />
 
             <ImageView
-                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginTop="4dp"
@@ -38,6 +37,7 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/app_icon_on_card" />
 
+            <!-- main icon -->
             <ImageView
                 android:id="@+id/package_icon"
                 android:layout_width="48dp"
@@ -47,8 +47,7 @@
                 android:adjustViewBounds="true"
                 android:baselineAlignBottom="false"
                 android:clickable="true"
-                android:scaleType="fitCenter"
-                app:srcCompat="@mipmap/ic_launcher" />
+                android:scaleType="fitCenter" />
 
         </RelativeLayout>
 
@@ -60,7 +59,7 @@
             <TextView
                 android:id="@+id/package_name"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="34dp"
                 android:gravity="center"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
@@ -68,7 +67,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorPrimary"
                 android:textIsSelectable="false"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <Button

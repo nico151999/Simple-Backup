@@ -1,8 +1,13 @@
 package de.nilix.simplebackup;
 
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.media.Image;
 import android.support.v7.widget.ButtonBarLayout;
@@ -21,10 +26,12 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
     private PackageManager pm;
     private List<ApplicationInfo> dataSource;
+    private Context context;
 
-    public PackageListAdapter(List<ApplicationInfo> dataArgs, PackageManager pm){
+    public PackageListAdapter(List<ApplicationInfo> dataArgs, PackageManager pm, Context context){
         dataSource = dataArgs;
         this.pm = pm;
+        this.context = context;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,8 +47,16 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Drawable icon = dataSource.get(position).loadIcon(pm);
+
         holder.packageName.setText(getAppName(dataSource.get(position), pm));
-        holder.packageIcon.setImageDrawable(dataSource.get(position).loadIcon(pm));
+        holder.packageIcon.setImageDrawable(icon);
+
+        Bitmap iconBitmap = drawableToBitmap(icon);
+        BlurHelper blurHelper = new BlurHelper(25f);
+        Bitmap blurred = blurHelper.blur(context, iconBitmap);
+
+        holder.packageBackground.setImageBitmap(blurred);
     }
 
     @Override
@@ -54,6 +69,7 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
     {
         protected TextView packageName;
         protected ImageView packageIcon;
+        protected ImageView packageBackground;
         protected Button buttonBackup;
 
         public ViewHolder(View itemView) {
@@ -62,9 +78,9 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
             // define view elements
             packageName =  (TextView) itemView.findViewById(R.id.package_name);
             packageIcon = (ImageView) itemView.findViewById(R.id.package_icon);
+            packageBackground = (ImageView) itemView.findViewById(R.id.package_background);
 
             buttonBackup = (Button) itemView.findViewById(R.id.button);
-
             buttonBackup.setOnClickListener(this);
         }
 
@@ -79,5 +95,27 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
     // Helpers
     private String getAppName(ApplicationInfo info, PackageManager pm) {
         return info.loadLabel(pm).toString();
+    }
+
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap;
+
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if (bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
     }
 }
