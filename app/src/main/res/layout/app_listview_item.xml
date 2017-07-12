@@ -44,7 +44,7 @@
                 android:id="@+id/package_icon"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_marginLeft="36dp"
+                android:layout_marginStart="36dp"
                 android:layout_marginTop="12dp"
                 android:adjustViewBounds="true"
                 android:baselineAlignBottom="false"
