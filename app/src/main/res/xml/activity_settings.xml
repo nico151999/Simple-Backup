@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings">
+
+    <PreferenceCategory
+        android:key="path_settings"
+        android:title="@string/settings_paths">
+
+        <!-- Backup Path -->
+        <PreferenceScreen
+            android:key="backup_path"
+            android:title="@string/backup_path"
+            android:summary="@string/backup_path_description" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
