@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Simple Backup</string>
+    <string name="developers">Developers</string>
     <string name="about">About</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="app_info">App Info</string>

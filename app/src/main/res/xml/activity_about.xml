@@ -3,14 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/about">
 
-    <PreferenceScreen
-        android:key="about_nico"
-        android:title="@string/nico"
-        android:summary="@string/nico_description" />
+    <PreferenceCategory
+        android:key="path_settings"
+        android:title="@string/developers">
 
-    <PreferenceScreen
-        android:key="about_felix"
-        android:title="@string/felix"
-        android:summary="@string/felix_description" />
+        <PreferenceScreen
+            android:key="about_nico"
+            android:title="@string/nico"
+            android:summary="@string/nico_description" />
+
+        <PreferenceScreen
+            android:key="about_felix"
+            android:title="@string/felix"
+            android:summary="@string/felix_description" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
