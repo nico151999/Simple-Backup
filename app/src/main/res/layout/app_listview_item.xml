@@ -59,10 +59,9 @@
                 android:id="@+id/package_name"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
-                android:gravity="center_vertical"
+                android:gravity="right|center_vertical"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textAlignment="viewEnd"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorPrimary"
                 android:textIsSelectable="false"
@@ -77,6 +76,7 @@
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:text="@string/backup"
+                android:textAlignment="textEnd"
                 android:textAllCaps="false" />
         </LinearLayout>
 

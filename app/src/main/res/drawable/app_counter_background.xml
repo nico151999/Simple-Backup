@@ -3,11 +3,11 @@
 
     <item>
         <shape>
-            <solid android:color="@color/colorPrimaryDark" />
+            <solid android:color="@android:color/darker_gray" />
         </shape>
     </item>
 
-    <item android:top="2dp">
+    <item android:top="1dp">
         <shape>
             <solid android:color="@android:color/white"/>
         </shape>

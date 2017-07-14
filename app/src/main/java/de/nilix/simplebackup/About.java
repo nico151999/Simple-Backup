@@ -1,16 +1,16 @@
 package de.nilix.simplebackup;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 
 /**
  * Created by nico99 on 12.07.17.
  */
 
-public class About extends Activity {
+public class About extends PreferenceActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.xml.activity_about);
+        addPreferencesFromResource(R.xml.activity_about);
     }
 }
