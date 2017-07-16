@@ -1,6 +1,7 @@
 package de.nilix.simplebackup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -63,6 +64,12 @@ public class Tab1Fragment extends Fragment {
                     }
                 });
 
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(ApplicationInfo item) {
+                testIntent();
+            }
+        });
 
         return view;
     }
@@ -74,5 +81,12 @@ public class Tab1Fragment extends Fragment {
 
         return packages;
 
+    }
+
+
+    public void testIntent() {
+        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+
+        startActivity(intent);
     }
 }

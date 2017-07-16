@@ -1,7 +1,9 @@
 package de.nilix.simplebackup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,6 +29,7 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
     private PackageManager pm;
     private List<ApplicationInfo> dataSource;
     private Context context;
+    private OnItemClickListener onItemClickListener;
 
     public PackageListAdapter(List<ApplicationInfo> dataArgs, PackageManager pm, Context context){
         dataSource = dataArgs;
@@ -47,6 +50,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        final ApplicationInfo item = dataSource.get(position);
+
         Drawable icon = dataSource.get(position).loadIcon(pm);
 
         holder.packageName.setText(getAppName(dataSource.get(position), pm));
@@ -57,16 +62,25 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         Bitmap blurred = blurHelper.blur(context, iconBitmap);
 
         holder.packageBackground.setImageBitmap(blurred);
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(item);
+            }
+        };
+
+        holder.buttonBackup.setOnClickListener(listener);
     }
+
+
 
     @Override
     public int getItemCount() {
         return dataSource.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-
-    {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView packageName;
         protected ImageView packageIcon;
         protected ImageView packageBackground;
@@ -81,18 +95,19 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
             packageBackground = (ImageView) itemView.findViewById(R.id.package_background);
 
             buttonBackup = (Button) itemView.findViewById(R.id.button);
-            buttonBackup.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            int position = getAdapterPosition() +1;
-            Toast.makeText(view.getContext(), "Das ist die " + position + ". installierte App", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    
+    public OnItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+
     // Helpers
     private String getAppName(ApplicationInfo info, PackageManager pm) {
         return info.loadLabel(pm).toString();
