@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item>
-        <shape>
-            <solid android:color="@color/colorAccent" />
-        </shape>
-    </item>
-
-    <item android:top="2dp">
+    <item android:height="1500dp"
+        android:width="1500dp">
         <shape>
             <solid android:color="@android:color/white"/>
         </shape>
     </item>
+    <item android:height="200dp"
+        android:width="200dp"
+        android:gravity="center"
+        android:drawable="@mipmap/ic_splash"/>
 
 </layer-list>

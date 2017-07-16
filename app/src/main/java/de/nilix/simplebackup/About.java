@@ -13,4 +13,9 @@ public class About extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.activity_about);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.translateout);
+    }
 }

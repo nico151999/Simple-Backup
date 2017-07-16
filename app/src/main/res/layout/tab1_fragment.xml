@@ -27,7 +27,7 @@
         android:paddingLeft="8dp"
         android:text="Installed:"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold" />
 

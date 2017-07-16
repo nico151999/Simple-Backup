@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,13 +35,33 @@ public class Tab1Fragment extends Fragment {
         PackageManager pm = getActivity().getPackageManager();
         List<ApplicationInfo> packages = getAppsWrapper();
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         //RecyclerView.Adapter adapter = new RecyclerAdapter(packageNamesArray); // Set data source // Old way
         PackageListAdapter adapter = new PackageListAdapter(packages, pm, getContext());
         recyclerView.setAdapter(adapter);
+
+        recyclerView.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+
+                    @Override
+                    public boolean onPreDraw() {
+                        recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                        for (int i = 0; i < recyclerView.getChildCount(); i++) {
+                            View v = recyclerView.getChildAt(i);
+                            v.setTranslationY(1500);
+                            v.animate().translationY(0)
+                                    .setDuration(500)
+                                    .setStartDelay(i * 50)
+                                    .start();
+                        }
+
+                        return true;
+                    }
+                });
 
 
         return view;

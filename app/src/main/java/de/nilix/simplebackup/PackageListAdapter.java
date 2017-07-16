@@ -86,7 +86,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
+            int position = getAdapterPosition() +1;
+            Toast.makeText(view.getContext(), "Das ist die " + position + ". installierte App", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -13,4 +13,9 @@ public class Settings extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.activity_settings);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.translateout);
+    }
 }

@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent intent1 = new Intent("de.nilix.simplebackup.settingsitem");
                 this.startActivity(intent1);
-                this.overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                this.overridePendingTransition(R.anim.translatein, R.anim.fadeout);
                 break;
             case R.id.action_about:
                 Intent intent2 = new Intent("de.nilix.simplebackup.aboutitem");
                 this.startActivity(intent2);
-                this.overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                this.overridePendingTransition(R.anim.translatein, R.anim.fadeout);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
