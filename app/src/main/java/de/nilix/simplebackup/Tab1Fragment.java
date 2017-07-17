@@ -1,26 +1,18 @@
 package de.nilix.simplebackup;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,7 +23,7 @@ public class Tab1Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab1_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
         PackageManager pm = getActivity().getPackageManager();
         List<ApplicationInfo> packages = getAppsWrapper();
@@ -55,8 +47,8 @@ public class Tab1Fragment extends Fragment {
                             View v = recyclerView.getChildAt(i);
                             v.setTranslationY(1500);
                             v.animate().translationY(0)
-                                    .setDuration(500)
-                                    .setStartDelay(i * 50)
+                                    .setDuration(350)
+                                    .setStartDelay(i * 25)
                                     .start();
                         }
 

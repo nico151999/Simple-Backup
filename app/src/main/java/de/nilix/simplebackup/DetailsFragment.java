@@ -16,7 +16,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
 
-        View view = inflater.inflate(R.layout.details_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_details, container, false);
 
         return view;
     }
