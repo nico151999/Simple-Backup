@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,11 @@ import java.util.List;
 
 
 public class Tab1Fragment extends Fragment implements AppItemClickListener {
+
     private static final String TAG = Tab1Fragment.class.getSimpleName();
+
+    public static final String EXTRA_APP_ITEM = "packageIcon";
+    public static final String EXTRA_APP_IMAGE_TRANSITION_NAME = "appIconTransition";
 
     @Nullable
     @Override
@@ -83,7 +88,13 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     @Override
     public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        intent.putExtra(EXTRA_APP_ITEM, appItem);
 
-        startActivity(intent);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                getActivity(),
+                sharedImageView,
+                "appIconTransition");
+
+        startActivity(intent, options.toBundle());
     }
 }

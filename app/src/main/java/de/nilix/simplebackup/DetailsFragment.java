@@ -1,5 +1,6 @@
 package de.nilix.simplebackup;
 
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,22 @@ import android.view.ViewGroup;
  */
 
 public class DetailsFragment extends Fragment {
+
+    private static final String EXTRA_APP_ITEM = "app_item";
+    private static final String EXTRA_TRANSITION_NAME = "transition_name";
+
+    public DetailsFragment() {
+
+    }
+
+    public static DetailsFragment newInstance(ApplicationInfo appItem, String transitionName) {
+        DetailsFragment detailsFragment = new DetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(EXTRA_APP_ITEM, appItem);
+        bundle.putString(EXTRA_TRANSITION_NAME, transitionName);
+        detailsFragment.setArguments(bundle);
+        return detailsFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

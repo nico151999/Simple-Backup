@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +58,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
         holder.packageBackground.setImageBitmap(blurred);
 
+        //ViewCompat.setTransitionName(holder.packageIcon, appItem.name);
+
         holder.buttonBackup.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,14 +94,6 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         }
 
     }
-
-    /*public OnItemClickListener getOnItemClickListener() {
-        return onItemClickListener;
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }*/
 
 
     // Helpers

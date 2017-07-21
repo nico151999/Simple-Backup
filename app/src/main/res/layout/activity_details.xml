@@ -19,11 +19,27 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <fragment android:name="de.nilix.simplebackup.DetailsFragment"
+    <!--<fragment android:name="de.nilix.simplebackup.DetailsFragment"
         android:id="@+id/container_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:transitionName="appIconTransition"
+            tools:src="@mipmap/ic_splash" />
+
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
