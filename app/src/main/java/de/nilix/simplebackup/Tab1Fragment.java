@@ -1,24 +1,19 @@
 package de.nilix.simplebackup;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telecom.Call;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,10 +21,7 @@ import java.util.List;
 
 public class Tab1Fragment extends Fragment implements AppItemClickListener {
 
-    private static final String TAG = Tab1Fragment.class.getSimpleName();
-
     public static final String EXTRA_APP_ITEM = "packageIcon";
-    public static final String EXTRA_APP_IMAGE_TRANSITION_NAME = "appIconTransition";
 
     @Nullable
     @Override
@@ -90,7 +82,7 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
                 getActivity(),
                 sharedImageView,
                 "appIconTransition");
