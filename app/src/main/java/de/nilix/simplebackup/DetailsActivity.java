@@ -1,12 +1,15 @@
 package de.nilix.simplebackup;
 
+import android.app.ActionBar;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by nico99 on 16.07.17.
@@ -29,6 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         //appLabel.setText(applicationInfo.packageName);
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();
 
     }
