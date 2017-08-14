@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
@@ -86,6 +87,19 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
                 getActivity(),
                 sharedImageView,
                 "appIconTransition");
+
+        startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    public void onAppItemClick(int pos, ApplicationInfo appItem, TextView sharedTextView) {
+        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        intent.putExtra(EXTRA_APP_ITEM, appItem);
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                getActivity(),
+                sharedTextView,
+                "appNameTransition");
 
         startActivity(intent, options.toBundle());
     }

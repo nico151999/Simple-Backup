@@ -63,7 +63,7 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </RelativeLayout>
 
@@ -83,7 +83,8 @@
                 android:textColor="@color/colorPrimary"
                 android:textIsSelectable="false"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:transitionName="appNameTransition"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
