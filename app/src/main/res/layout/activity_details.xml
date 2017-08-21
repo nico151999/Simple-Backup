@@ -44,11 +44,12 @@
             <TextView
                 android:id="@+id/appTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="36dp"
                 android:gravity="center"
-                android:text="app"
-                android:textSize="30sp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorPrimary"
+                android:textIsSelectable="false"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:transitionName="appNameTransition" />
         </LinearLayout>

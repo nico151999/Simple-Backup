@@ -38,7 +38,7 @@
 
             <!-- main icon -->
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/package_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -46,9 +46,10 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="12dp"
                 android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
                 android:baselineAlignBottom="false"
                 android:scaleType="fitCenter"
-                android:transitionName="appIconTransition"/>
+                android:transitionName="appIconTransition" />
 
             <TextView
                 android:id="@+id/app_number"
@@ -76,15 +77,13 @@
                 android:id="@+id/package_name"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
+                android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorPrimary"
                 android:textIsSelectable="false"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:transitionName="appNameTransition"/>
+                android:transitionName="appNameTransition" />
 
             <LinearLayout
                 android:layout_width="match_parent"

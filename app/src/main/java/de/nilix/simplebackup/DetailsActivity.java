@@ -28,9 +28,9 @@ public class DetailsActivity extends AppCompatActivity {
         ApplicationInfo applicationInfo = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM);
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        //TextView appLabel = (TextView) findViewById(R.id.appLabel);
+        TextView appTitle = (TextView) findViewById(R.id.appTitle);
 
-        //appLabel.setText(applicationInfo.packageName);
+        appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(applicationInfo.loadLabel(pm).toString());

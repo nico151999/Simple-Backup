@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">Über</string>
+    <string name="total_installed_apps">Installierte Apps: %1$s</string>
+    <string name="app_info"></string>
+</resources>

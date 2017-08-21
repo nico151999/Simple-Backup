@@ -9,12 +9,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +42,9 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         PackageManager pm = getActivity().getPackageManager();
         List<ApplicationInfo> packages = getAppsWrapper();
+
+        TextView appCounter = (TextView)view.findViewById(R.id.app_counter);
+        appCounter.setText(String.format(getResources().getString(R.string.total_installed_apps), Integer.toString(packages.size())));
 
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -79,28 +86,23 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView) {
+    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-                getActivity(),
-                sharedImageView,
-                "appIconTransition");
+        Pair<View, String> p1 = Pair.create((View)sharedImageView, "appIconTransition");
+        Pair<View, String> p2 = Pair.create((View)sharedTextView, "appNameTransition");
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2);
 
         startActivity(intent, options.toBundle());
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, TextView sharedTextView) {
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(EXTRA_APP_ITEM, appItem);
-
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-                getActivity(),
-                sharedTextView,
-                "appNameTransition");
-
-        startActivity(intent, options.toBundle());
+    public void onBackupClick(int pos, ApplicationInfo appItem) {
+        Toast toast = Toast.makeText(getActivity(), appItem.packageName, Toast.LENGTH_SHORT);
+        toast.show();
     }
+
+
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simple Backup</string>
+    <string name="app_name" translatable="false">Simple Backup</string>
     <string name="developers">Developers</string>
     <string name="about">About</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -14,4 +14,6 @@
     <string name="nico_description">This is all you need to know about Nico</string>
     <string name="felix">Felix H</string>
     <string name="felix_description">This is all you need to know about Felix</string>
+    <string name="total_installed_apps">Installed Apps: %1$s</string>
+    <string name="total_backuped_apps">Backuped Apps: %1$s</string>
 </resources>

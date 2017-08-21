@@ -7,11 +7,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +53,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         holder.packageName.setText(getAppName(appItem, pm));
         holder.packageIcon.setImageDrawable(icon);
 
+        holder.packageNumber.setText(Integer.toString(position + 1));
+
         Bitmap iconBitmap = drawableToBitmap(icon);
         BlurHelper blurHelper = new BlurHelper(25f);
         Bitmap blurred = blurHelper.blur(context, iconBitmap);
@@ -59,14 +63,20 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
         //ViewCompat.setTransitionName(holder.packageIcon, appItem.name);
 
+        holder.packageIcon.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName);
+            }
+        });
+
         holder.buttonBackup.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon);
+                appItemClickListener.onBackupClick(holder.getAdapterPosition(), appItem);
             }
         });
     }
-
 
 
 
@@ -77,17 +87,19 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView packageName;
-        protected ImageView packageIcon;
+        protected ImageButton packageIcon;
         protected ImageView packageBackground;
+        protected TextView packageNumber;
         protected Button buttonBackup;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             // define view elements
-            packageName =  (TextView) itemView.findViewById(R.id.package_name);
-            packageIcon = (ImageView) itemView.findViewById(R.id.package_icon);
+            packageName = (TextView) itemView.findViewById(R.id.package_name);
+            packageIcon = (ImageButton) itemView.findViewById(R.id.package_icon);
             packageBackground = (ImageView) itemView.findViewById(R.id.package_background);
+            packageNumber = (TextView) itemView.findViewById(R.id.app_number);
 
             buttonBackup = (Button) itemView.findViewById(R.id.button);
         }
