@@ -26,10 +26,12 @@ public class DetailsActivity extends AppCompatActivity {
         ApplicationInfo applicationInfo = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM);
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        TextView appTitle = (TextView) findViewById(R.id.appTitle);
+        TextView appTitle = (TextView) findViewById(R.id.package_name);
+        TextView appNumber = (TextView) findViewById(R.id.detailsAppNumber);
 
         appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
+        appNumber.setText("12");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();

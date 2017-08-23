@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.view.menu.MenuView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,7 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         holder.packageIcon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName);
+                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber);
             }
         });
 
@@ -91,6 +92,8 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         protected ImageView packageBackground;
         protected TextView packageNumber;
         protected Button buttonBackup;
+        protected CardView cardView;
+        protected ImageView packageIconBackground;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -100,8 +103,9 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
             packageIcon = (ImageButton) itemView.findViewById(R.id.package_icon);
             packageBackground = (ImageView) itemView.findViewById(R.id.package_background);
             packageNumber = (TextView) itemView.findViewById(R.id.app_number);
-
+            cardView = (CardView) itemView.findViewById(R.id.card);
             buttonBackup = (Button) itemView.findViewById(R.id.button);
+            packageIconBackground = (ImageView) itemView.findViewById(R.id.icon_background);
         }
 
     }

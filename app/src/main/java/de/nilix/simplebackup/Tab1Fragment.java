@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
@@ -84,14 +85,17 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView) {
+    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
 
         Pair<View, String> p1 = Pair.create((View)sharedImageView, "appIconTransition");
         Pair<View, String> p2 = Pair.create((View)sharedTextView, "appNameTransition");
+        Pair<View, String> p3 = Pair.create((View)sharedCardView, "cardTransition");
+        Pair<View, String> p4 = Pair.create((View)secondSharedImageView, "appIconBackgroundTransition");
+        Pair<View, String> p5 = Pair.create((View)secondSharedTextView, "appNumberTransition");
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5);
 
         startActivity(intent, options.toBundle());
     }
