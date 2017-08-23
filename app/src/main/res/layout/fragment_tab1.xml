@@ -7,15 +7,14 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/fragment_background"
+        android:layout_marginBottom="24dp"
         android:clipToPadding="false"
         android:overScrollMode="always"
         android:paddingBottom="12dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="12dp"
-        android:scrollbars="none"
-        android:layout_marginBottom="24dp"/>
+        android:scrollbars="none" />
 
     <TextView
         android:id="@+id/app_counter"

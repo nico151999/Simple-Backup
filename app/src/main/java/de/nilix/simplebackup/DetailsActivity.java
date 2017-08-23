@@ -5,9 +5,12 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import static android.view.Gravity.TOP;
 
 /**
  * Created by nico99 on 16.07.17.
@@ -36,16 +39,15 @@ public class DetailsActivity extends AppCompatActivity {
         toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();
 
-        Explode explode = new Explode();
-        explode.excludeTarget(android.R.id.statusBarBackground, true);
-        explode.excludeTarget(android.R.id.navigationBarBackground, true);
-        explode.setDuration(750);
+        Fade fade = new Fade();
+        getWindow().setEnterTransition(fade);
+        fade.excludeChildren(R.id.details, true);
+        fade.excludeTarget(android.R.id.statusBarBackground, true);
+        fade.excludeTarget(android.R.id.navigationBarBackground, true);
+        fade.setDuration(1000);
 
-        getWindow().setEnterTransition(explode);
-        getWindow().setExitTransition(explode);
-
-        getWindow().getSharedElementEnterTransition().setDuration(750);
-        getWindow().getSharedElementReturnTransition().setDuration(750);
+        getWindow().getSharedElementEnterTransition().setDuration(1000);
+        getWindow().getSharedElementReturnTransition().setDuration(1000);
 
     }
 }

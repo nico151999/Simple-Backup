@@ -67,7 +67,7 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         holder.packageIcon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber);
+                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber, holder.buttonBackup);
             }
         });
 

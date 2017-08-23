@@ -2,5 +2,16 @@
 <resources>
     <string name="about">Über</string>
     <string name="total_installed_apps">Installierte Apps: %1$s</string>
-    <string name="app_info"></string>
+    <string name="app_info">App Info</string>
+    <string name="backup">Sichern</string>
+    <string name="backup_path">Sicherungsort</string>
+    <string name="backup_path_description">Hier drücken, um das Verzeichnis zu wählen, in dem die Sicherung angelegt werden soll</string>
+    <string name="developers">Entwickler</string>
+    <string name="felix_description">Das ist alles, was man über Felix wissen muss</string>
+    <string name="hello_blank_fragment">Hallo, leeres Fragment</string>
+    <string name="nico_description">Das ist alles, was man über Nico wissen muss</string>
+    <string name="section_format">Hallo Welt ausgehend von Sektion: %1$d</string>
+    <string name="settings">Einstellungen</string>
+    <string name="settings_paths">Dateipfade</string>
+    <string name="total_backuped_apps">Gesicherte Apps</string>
 </resources>

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,8 +64,8 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
                             View v = recyclerView.getChildAt(i);
                             v.setTranslationY(1500);
                             v.animate().translationY(0)
-                                    .setDuration(350)
-                                    .setStartDelay(i * 25)
+                                    .setDuration(400)
+                                    .setStartDelay(i * 40)
                                     .start();
                         }
 
@@ -85,7 +86,7 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView) {
+    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
 
@@ -94,8 +95,9 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
         Pair<View, String> p3 = Pair.create((View)sharedCardView, "cardTransition");
         Pair<View, String> p4 = Pair.create((View)secondSharedImageView, "appIconBackgroundTransition");
         Pair<View, String> p5 = Pair.create((View)secondSharedTextView, "appNumberTransition");
+        Pair<View, String> p6 = Pair.create((View)sharedButtonView, "backupButtonTransition");
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5, p6);
 
         startActivity(intent, options.toBundle());
     }

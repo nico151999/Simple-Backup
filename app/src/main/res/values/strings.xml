@@ -10,9 +10,9 @@
     <string name="backup_path">Backup Path</string>
     <string name="backup_path_description">Press here to set the directory where to store the backups.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="nico">Nico F</string>
+    <string name="nico" translatable="false">Nico F</string>
     <string name="nico_description">This is all you need to know about Nico</string>
-    <string name="felix">Felix H</string>
+    <string name="felix" translatable="false">Felix H</string>
     <string name="felix_description">This is all you need to know about Felix</string>
     <string name="total_installed_apps">Installed Apps: %1$s</string>
     <string name="total_backuped_apps">Backuped Apps: %1$s</string>

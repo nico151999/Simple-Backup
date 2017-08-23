@@ -35,10 +35,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
                 android:baselineAlignBottom="false"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/app_icon_on_card"
-                android:transitionName="appIconBackgroundTransition"/>
+                android:transitionName="appIconBackgroundTransition"
+                app:srcCompat="@drawable/app_icon_on_card" />
 
             <!-- main icon -->
 
@@ -79,7 +80,7 @@
             <TextView
                 android:id="@+id/package_name"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="36dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="11dp"
@@ -95,6 +96,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:layout_marginTop="-11dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -115,7 +117,8 @@
                     android:layout_height="match_parent"
                     android:text="@string/backup"
                     android:textAllCaps="false"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:transitionName="backupButtonTransition" />
             </LinearLayout>
 
         </LinearLayout>
