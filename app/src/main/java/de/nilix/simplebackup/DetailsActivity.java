@@ -5,12 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import static android.view.Gravity.TOP;
 
 /**
  * Created by nico99 on 16.07.17.
@@ -35,16 +31,9 @@ public class DetailsActivity extends AppCompatActivity {
         appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
         appNumber.setText("12");
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.details_toolbar);
         toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();
-
-        Fade fade = new Fade();
-        getWindow().setEnterTransition(fade);
-        fade.excludeChildren(R.id.details, true);
-        fade.excludeTarget(android.R.id.statusBarBackground, true);
-        fade.excludeTarget(android.R.id.navigationBarBackground, true);
-        fade.setDuration(1000);
 
         getWindow().getSharedElementEnterTransition().setDuration(1000);
         getWindow().getSharedElementReturnTransition().setDuration(1000);
