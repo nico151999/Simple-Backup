@@ -35,8 +35,11 @@ public class DetailsActivity extends AppCompatActivity {
         toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();
 
-        getWindow().getSharedElementEnterTransition().setDuration(1000);
-        getWindow().getSharedElementReturnTransition().setDuration(1000);
+        getWindow().getSharedElementEnterTransition().setDuration(750);
+        getWindow().getSharedElementReturnTransition().setDuration(750);
+
+        getWindow().setAllowEnterTransitionOverlap(false);
+        getWindow().setAllowReturnTransitionOverlap(false);
 
     }
 }

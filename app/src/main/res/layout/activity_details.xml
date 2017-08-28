@@ -40,6 +40,16 @@
             android:layout_height="match_parent"
             android:layout_marginTop="80dp">
 
+            <ImageView
+                android:id="@+id/detailsIconBackground"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/detailsAppNumber"
+                android:layout_centerInParent="false"
+                android:scaleType="centerCrop"
+                android:transitionName="appIconBackgroundTransition"
+                app:srcCompat="@drawable/app_icon_on_card" />
+
             <TextView
                 android:id="@+id/package_name"
                 android:layout_width="wrap_content"
@@ -55,17 +65,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:transitionName="appNameTransition" />
-
-            <ImageView
-                android:id="@+id/detailsIconBackground"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_alignBottom="@+id/detailsAppNumber"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="32dp"
-                android:scaleType="centerCrop"
-                android:transitionName="appIconBackgroundTransition"
-                app:srcCompat="@drawable/app_icon_on_card" />
 
             <TextView
                 android:id="@+id/detailsAppNumber"
@@ -86,7 +85,7 @@
                 android:id="@+id/button"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_alignBottom="@+id/detailsAppNumber"
                 android:layout_centerInParent="true"
                 android:layout_marginBottom="32dp"
