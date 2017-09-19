@@ -7,9 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +70,7 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         holder.packageIcon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber, holder.buttonBackup);
+                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber, holder.buttonBackup, holder.appbarLayout1, holder.appbarLayout2, holder.main_toolbar, holder.details_toolbar, holder.tabs);
             }
         });
 
@@ -94,6 +97,11 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         protected Button buttonBackup;
         protected CardView cardView;
         protected ImageView packageIconBackground;
+        protected AppBarLayout appbarLayout1;
+        protected AppBarLayout appbarLayout2;
+        protected Toolbar main_toolbar;
+        protected Toolbar details_toolbar;
+        protected TabLayout tabs;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -106,6 +114,11 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
             cardView = (CardView) itemView.findViewById(R.id.card);
             buttonBackup = (Button) itemView.findViewById(R.id.button);
             packageIconBackground = (ImageView) itemView.findViewById(R.id.icon_background);
+            appbarLayout1 = (AppBarLayout) itemView.findViewById(R.id.appbar);
+            appbarLayout2 = (AppBarLayout) itemView.findViewById(R.id.details_bar);
+            main_toolbar = (Toolbar) itemView.findViewById(R.id.toolbar);
+            details_toolbar = (Toolbar) itemView.findViewById(R.id.details_toolbar);
+            tabs = (TabLayout) itemView.findViewById(R.id.tabs);
         }
 
     }

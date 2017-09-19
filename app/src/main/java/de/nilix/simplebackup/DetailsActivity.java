@@ -31,8 +31,6 @@ public class DetailsActivity extends AppCompatActivity {
         appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
         appNumber.setText("12");
-        Toolbar toolbar = (Toolbar) findViewById(R.id.details_toolbar);
-        toolbar.setTitle(applicationInfo.loadLabel(pm).toString());
         supportStartPostponedEnterTransition();
 
         getWindow().getSharedElementEnterTransition().setDuration(750);

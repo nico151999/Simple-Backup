@@ -10,17 +10,45 @@
     tools:context="de.nilix.simplebackup.DetailsActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-130dp"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:transitionName="appbarlayout1Transition">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name"
+            android:transitionName="toolbar1Transition" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:transitionName="tablayoutTransition" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.AppBarLayout
         android:id="@+id/details_bar"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:transitionName="appbarlayout2Transition">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/details_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="0dp" />
+            android:elevation="0dp"
+            app:title="@string/app_info"
+            android:transitionName="toolbar2Transition"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -88,7 +116,7 @@
                 android:layout_height="36dp"
                 android:layout_alignBottom="@+id/detailsAppNumber"
                 android:layout_centerInParent="true"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/backup"
                 android:textAllCaps="false"
                 android:textSize="12sp"
