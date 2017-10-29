@@ -30,7 +30,8 @@ import java.util.List;
 
 public class Tab1Fragment extends Fragment implements AppItemClickListener {
 
-    public static final String EXTRA_APP_ITEM = "packageIcon";
+    public static final String EXTRA_APP_ITEM = "packageInfos";
+    public static final String EXTRA_APP_ITEM2 = "packageIcon";
 
     @Nullable
     @Override
@@ -90,9 +91,10 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView, AppBarLayout sharedAppBarLayout1, AppBarLayout sharedAppBarLayout2, Toolbar sharedToolbar1, Toolbar sharedToolbar2, TabLayout sharedTabLayout) {
+    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
+        intent.putExtra(EXTRA_APP_ITEM2, pos);
 
         Pair<View, String> p1 = Pair.create((View)sharedImageView, "appIconTransition");
         Pair<View, String> p2 = Pair.create((View)sharedTextView, "appNameTransition");
@@ -100,13 +102,8 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
         Pair<View, String> p4 = Pair.create((View)secondSharedImageView, "appIconBackgroundTransition");
         Pair<View, String> p5 = Pair.create((View)secondSharedTextView, "appNumberTransition");
         Pair<View, String> p6 = Pair.create((View)sharedButtonView, "backupButtonTransition");
-        Pair<View, String> p7 = Pair.create((View)sharedAppBarLayout1, "appbarlayout1Transition");
-        Pair<View, String> p8 = Pair.create((View)sharedAppBarLayout2, "appbarlayout2Transition");
-        Pair<View, String> p9 = Pair.create((View)sharedToolbar1, "toolbar1Transition");
-        Pair<View, String> p10 = Pair.create((View)sharedToolbar2, "toolbar2Transition");
-        Pair<View, String> p11 = Pair.create((View)sharedTabLayout, "tablayoutTransition");
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5, p6);
 
         startActivity(intent, options.toBundle());
     }
