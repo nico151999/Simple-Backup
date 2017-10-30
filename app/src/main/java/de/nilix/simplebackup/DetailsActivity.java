@@ -23,7 +23,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         ApplicationInfo applicationInfo = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM);
-        int intPosition = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM2);
+        int intPosition = extras.getInt(Tab1Fragment.EXTRA_APP_ITEM2) + 1;
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         TextView appTitle = (TextView) findViewById(R.id.package_name);
@@ -31,7 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
-        appNumber.setText(intPosition);
+        appNumber.setText(Integer.toString(intPosition));
         supportStartPostponedEnterTransition();
 
         getWindow().getSharedElementEnterTransition().setDuration(750);
