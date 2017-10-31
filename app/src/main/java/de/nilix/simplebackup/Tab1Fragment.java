@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.CycleInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
 
     public static final String EXTRA_APP_ITEM = "packageInfos";
     public static final String EXTRA_APP_ITEM2 = "packageIcon";
+    public static final String EXTRA_APP_ITEM3 = "blurredIcon";
+
 
     @Nullable
     @Override
@@ -68,9 +72,11 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
                         for (int i = 0; i < recyclerView.getChildCount(); i++) {
                             View v = recyclerView.getChildAt(i);
                             v.setTranslationY(1500);
+                            v.setRotation(45);
                             v.animate().translationY(0)
-                                    .setDuration(400)
-                                    .setStartDelay(i * 40)
+                                    .rotation(0)
+                                    .setDuration(500)
+                                    .setStartDelay(i * 60)
                                     .start();
                         }
 
@@ -91,10 +97,11 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
     }
 
     @Override
-    public void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView) {
+    public void onAppItemClick(int pos, ApplicationInfo appItem, Bitmap blurred, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView, ImageView thirdSharedImageView) {
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(EXTRA_APP_ITEM, appItem);
         intent.putExtra(EXTRA_APP_ITEM2, pos);
+        intent.putExtra(EXTRA_APP_ITEM3, blurred);
 
         Pair<View, String> p1 = Pair.create((View)sharedImageView, "appIconTransition");
         Pair<View, String> p2 = Pair.create((View)sharedTextView, "appNameTransition");
@@ -102,8 +109,9 @@ public class Tab1Fragment extends Fragment implements AppItemClickListener {
         Pair<View, String> p4 = Pair.create((View)secondSharedImageView, "appIconBackgroundTransition");
         Pair<View, String> p5 = Pair.create((View)secondSharedTextView, "appNumberTransition");
         Pair<View, String> p6 = Pair.create((View)sharedButtonView, "backupButtonTransition");
+        Pair<View, String> p7 = Pair.create((View)thirdSharedImageView, "blurredPackageBackgroundTransition");
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5, p6);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), p1, p2, p3, p4, p5, p6, p7);
 
         startActivity(intent, options.toBundle());
     }

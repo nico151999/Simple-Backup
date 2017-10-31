@@ -3,7 +3,7 @@
     <item android:height="72dp"
         android:width="120dp">
         <shape>
-            <stroke android:color="@android:color/white" android:width="4dp"/>
+            <stroke android:color="@android:color/transparent" android:width="4dp"/>
         </shape>
     </item>
     <item android:width="112dp"

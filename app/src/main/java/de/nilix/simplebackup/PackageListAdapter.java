@@ -61,16 +61,17 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
         Bitmap iconBitmap = drawableToBitmap(icon);
         BlurHelper blurHelper = new BlurHelper(25f);
-        Bitmap blurred = blurHelper.blur(context, iconBitmap);
+        final Bitmap blurred = blurHelper.blur(context, iconBitmap);
 
         holder.packageBackground.setImageBitmap(blurred);
+
 
         //ViewCompat.setTransitionName(holder.packageIcon, appItem.name);
 
         holder.packageIcon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber, holder.buttonBackup);
+                appItemClickListener.onAppItemClick(holder.getAdapterPosition(), appItem, blurred, holder.packageIcon, holder.packageName, holder.cardView, holder.packageIconBackground, holder.packageNumber, holder.buttonBackup, holder.packageBackground);
             }
         });
 

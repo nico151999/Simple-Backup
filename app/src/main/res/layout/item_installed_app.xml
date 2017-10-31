@@ -28,7 +28,10 @@
                 android:id="@+id/package_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:layout_margin="4dp"
+                android:background="@color/cardview_dark_background"
+                android:scaleType="centerCrop"
+                android:transitionName="blurredPackageBackgroundTransition" />
 
             <ImageView
                 android:id="@+id/icon_background"

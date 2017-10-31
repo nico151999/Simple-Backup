@@ -2,6 +2,7 @@ package de.nilix.simplebackup;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,14 +25,18 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ApplicationInfo applicationInfo = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM);
         int intPosition = extras.getInt(Tab1Fragment.EXTRA_APP_ITEM2) + 1;
+        Bitmap blurred = extras.getParcelable(Tab1Fragment.EXTRA_APP_ITEM3);
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         TextView appTitle = (TextView) findViewById(R.id.package_name);
         TextView appNumber = (TextView) findViewById(R.id.detailsAppNumber);
+        ImageView imageViewBlurred = (ImageView) findViewById(R.id.detailsBlurredBackground);
 
         appTitle.setText(applicationInfo.loadLabel(pm).toString());
         imageView.setImageDrawable(applicationInfo.loadIcon(pm));
         appNumber.setText(Integer.toString(intPosition));
+        imageViewBlurred.setImageBitmap(blurred);
+
         supportStartPostponedEnterTransition();
 
         getWindow().getSharedElementEnterTransition().setDuration(750);

@@ -1,6 +1,7 @@
 package de.nilix.simplebackup;
 
 import android.content.pm.ApplicationInfo;
+import android.graphics.Bitmap;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.CardView;
@@ -14,7 +15,7 @@ import android.widget.TextView;
  */
 
 public interface AppItemClickListener {
-    void onAppItemClick(int pos, ApplicationInfo appItem, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView);
+    void onAppItemClick(int pos, ApplicationInfo appItem, Bitmap blurred, ImageView sharedImageView, TextView sharedTextView, CardView sharedCardView, ImageView secondSharedImageView, TextView secondSharedTextView, Button sharedButtonView, ImageView packageBackground);
 
     void onBackupClick(int pos, ApplicationInfo appItem);
 }
